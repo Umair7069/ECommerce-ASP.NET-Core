@@ -1,0 +1,21 @@
+﻿@model Ecommerce_website.Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<h2>Delete Product</h2>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <ul class="list-group my-3">
+            <li class="list-group-item">Product Id: @Model.product_id</li>
+            <li class="list-group-item">Product Name: @Model.product_name</li>
+        </ul>
+        <a href="@Url.Action("DeleteProductConfirmed", "Admin", new { id = Model.product_id })" class="btn btn-danger">Delete confirm </a>
+        <a href="@Url.Action("fetchproducts", "Admin")" class="btn btn-warning">Back to List </a>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

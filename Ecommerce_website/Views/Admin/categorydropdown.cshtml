@@ -1,0 +1,9 @@
+﻿@model List<Category>
+<select class="control-label" name="cat_id">
+    <option hidden>select a category</option>
+    @foreach(var cat in Model)
+    {
+        <option value="@cat.category_id" selected="@cat.category_id==ViewBag.selectedcategoryid">@cat.category_name</option>
+    }
+
+</select>

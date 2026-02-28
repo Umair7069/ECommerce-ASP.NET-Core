@@ -1,0 +1,67 @@
+﻿@model Ecommerce_website.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Customer</h4>
+<p style="color:red">@TempData["sizeerror"]</p>
+<p style="color:red">@TempData["exterror"]</p>
+<hr />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <img src="~/productimages/@Model.product_image"
+             alt="Product Image"
+             class="rounded shadow"
+             style="width: 140px; height: 140px; object-fit: cover;" />
+        <a asp-action="updateProductPicture" asp-route-id="@Model.product_id" class="btn btn-primary px-4"> Update Product Picture </a>
+        <form asp-action="updateProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="product_id" />
+            <div class="form-group">
+                <label asp-for="product_name" class="control-label"> Name </label>
+                <input asp-for="product_name" class="form-control" />
+                <span asp-validation-for="product_name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="product_price" class="control-label">Price</label>
+                <input asp-for="product_price" class="form-control" />
+                <span asp-validation-for="product_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_description" class="control-label">Discription</label>
+                <input asp-for="product_description" class="form-control" />
+                <span asp-validation-for="product_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cat_id" class="control-label">Category</label><br />
+                @Html.Partial("categorydropdown", ViewData["category"])
+                <span asp-validation-for="cat_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <img src="" />
+                <input type="hidden" asp-for="product_image" class="form-control" />
+                
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Update Product" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div>
+    <a asp-action="fetchproducts">Back to List</a>
+</div>
+
+
+
+

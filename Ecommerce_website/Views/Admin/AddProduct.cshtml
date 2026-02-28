@@ -1,0 +1,70 @@
+﻿@model Ecommerce_website.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Add Product</h1>
+
+<p style="color:red">@TempData["sizeerror"]</p>
+<p style="color:red">@TempData["exterror"]</p>
+<p style="color:red">@TempData["fieldsrequired"] </p>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form asp-action="AddProduct" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="product_id" />
+
+            <div class="form-group">
+                <label asp-for="product_name" class="control-label"> Name </label>
+                <input asp-for="product_name" class="form-control" placeholder="Enter name "/>
+                <span asp-validation-for="product_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_price" class="control-label">Price</label>
+                <input asp-for="product_price" class="form-control" placeholder="Enter price" />
+                <span asp-validation-for="product_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_description" class="control-label">Product description</label>
+                <input asp-for="product_description" class="form-control" placeholder="Enter discription " />
+                <span asp-validation-for="product_description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="cat_id" class="control-label">Product Category</label>
+                <br>
+                @Html.Partial("categorydropdown", ViewData["category"])
+                
+
+                <span asp-validation-for="cat_id" class="text-danger"></span>
+            </div>
+
+           
+            <div class="form-group">
+                <label asp-for="product_image" class="control-label">Image</label>
+                <img src="" />
+                <input type="file" asp-for="product_image" class="form-control" />
+                <span asp-validation-for="product_image" class="text-danger"></span>
+            </div>
+            
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add Product" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+

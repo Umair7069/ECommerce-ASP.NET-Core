@@ -1,0 +1,64 @@
+﻿@model Ecommerce_website.Models.Product
+
+@{
+    ViewData["Title"] = "ProductDetails";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+
+            <h2 class="text-center mb-4 fw-bold text-primary">Product Details</h2>
+
+            <div class="text-center mb-4">
+                <img src="~/productimages/@Model.product_image"
+                     alt="Product Image"
+                     class="rounded shadow"
+                     style="width: 140px; height: 140px; object-fit: cover;" />
+            </div>
+
+            <dl class="row fs-5">
+                <dt class="col-sm-3 fw-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.product_name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.product_name)
+                </dd>
+
+                <dt class="col-sm-3 fw-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.product_price)
+                </dt>
+                <dd class="col-sm-9 text-success fw-semibold">
+                    $ @Html.DisplayFor(model => model.product_price)
+                </dd>
+
+                <dt class="col-sm-3 fw-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.product_description)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.product_description)
+                </dd>
+
+                <dt class="col-sm-3 fw-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.category)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.category.category_name)
+                </dd>
+            </dl>
+
+            <div class="mt-4 d-flex justify-content-between">
+                <a asp-action="Update" asp-route-id="@Model?.product_id"
+                   class="btn btn-primary px-4">
+                    Update
+                </a>
+
+                <a asp-action="fetchproducts"
+                   class="btn btn-outline-secondary px-4">
+                    Back to List
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
